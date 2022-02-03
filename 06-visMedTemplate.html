@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section id="liste"></section>
+    <template>
+      <article id="dyr">
+        <h3></h3>
+        <p>Type:</p>
+        <p>Levested:</p>
+        <img src="" alt="" />
+      </article>
+    </template>
+    <script>
+      //Dette er et array
+      let dyr = [
+        {
+          navn: "Gris",
+          type: "pattedyr",
+          billede: "http://mabe-kea.dk/E19/pics/pig.png",
+          levested: "svinefarme",
+        },
+        {
+          navn: "Frø",
+          type: "Pade",
+          billede: "http://mabe-kea.dk/E19/pics/frog.png",
+          levested: "Sø",
+        },
+        {
+          navn: "Ræv",
+          type: "Pattedyr",
+          billede: "http://mabe-kea.dk/E19/pics/fox.png",
+          levested: "Skov",
+        },
+        {
+          navn: "Sild",
+          type: "Fisk",
+          billede: "http://mabe-kea.dk/E19/pics/sild.jpg",
+          levested: "Havet",
+        },
+        {
+          navn: "Krokodille",
+          type: "Krybdyr",
+          billede: "http://mabe-kea.dk/E19/pics/kroko.jpg",
+          levested: "Sump",
+        },
+      ];
+
+      document.addEventListener("DOMContentLoaded", start);
+      console.log("DOMContentLoaded");
+
+      function start() {
+        const listeVisning = document.querySelector("#liste");
+        const dyrTemplate = document.querySelector("template");
+        dyr.forEach((dyr) => {
+          let klon = dyrTemplate.cloneNode(true).content;
+          klon.querySelector("h3").textContent = dyr.navn;
+          klon.querySelector("p:first-of-type").innerHTML += dyr.type;
+          klon.querySelector("p:last-of-type").innerHTML += dyr.levested;
+          klon.querySelector("img").src = dyr.billede;
+          listeVisning.appendChild(klon);
+        });
+      }
+    </script>
+  </body>
+</html>
